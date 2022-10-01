@@ -1,10 +1,9 @@
-// import cookAxios from '../cookHomeAxios'
 import { Link } from "react-router-dom"
 
-export const FindRecipe = () => {
+export const FavoritesRecipes = () => {
     return (
         <div>
-            <h2>find recipe</h2>
+            <h2>FavoritesRecipes</h2>
             <Link to='/'><button>Home</button></Link>
         </div>
     )

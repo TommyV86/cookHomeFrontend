@@ -5,6 +5,7 @@ import { FindRecipe } from './components/FindRecipe';
 import { FindedRecipe } from './components/FindedRecipe';
 import { ModifyRecipe } from './components/ModifyRecipe';
 import { FavoritesRecipes } from './components/FavoritesRecipes';
+import { LastRecipe } from './components/LastRecipe'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/FindedRecipe' element={<FindedRecipe/>}/>
           <Route path='/ModifyRecipe' element={<ModifyRecipe/>}/>
           <Route path='/FavoritesRecipes' element={<FavoritesRecipes/>}/>
+          {<Route path='/LastRecipe' element={<LastRecipe/>}></Route>}
         </Routes>
       </BrowserRouter>
       </nav>

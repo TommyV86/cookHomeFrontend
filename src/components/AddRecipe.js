@@ -9,8 +9,10 @@ export const AddRecipe = () => {
     
     const postValues = (values) => {
             cookAxios.post('postRecipe', values).then((res)=>{
-            console.log(" description inserted ")
-            console.log(" name description : " + res.name)
+                const recipesStringified = JSON.stringify(res.data)
+                localStorage.setItem('recipeValues', recipesStringified)
+                console.log(" description inserted ")
+                console.log(" name description : " + res.data.name)
         })
     }
 

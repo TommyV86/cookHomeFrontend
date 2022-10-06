@@ -4,6 +4,7 @@ export const Home = () => {
     
     const recipeName = JSON.parse(localStorage.getItem('recipeValues'))
 
+    const display = recipeName == null ? <h2>pas de nouvelle recette</h2> : <Link to={'/LastRecipe'}><button >{recipeName.name}</button></Link>
     return (
         <div>
 
@@ -14,7 +15,8 @@ export const Home = () => {
 
             <h2>Bienvenue à Cook Home, vous y trouverez les meilleures recettes ici !</h2>
                 <h2>Dernière recette : </h2>
-                    <Link to={'/LastRecipe'}><button >{recipeName.name}</button></Link>    
+                {display}
+                        
         </div>
     )
 }

@@ -8,13 +8,13 @@ export const FindedRecipe = () => {
     let displayRecipe = recipeStored.map(recipe=>{
         return(
             <div key={recipe._id}> 
-                <h3>{recipe._id === id ? <div><p>{recipe.name}</p><p>{recipe.description}</p></div>: ""}</h3>
+                <>{recipe._id === id ? <><h3>Recette :</h3><p>{recipe.name}</p><h3>Description :</h3><p>{recipe.description}</p></>: ""}</>
             </div>
         )
     })
 
     const addFavRecipe = () => {
-        localStorage.setItem('idFavRecipes', [id])
+        localStorage.setItem('idFavRecipes', id)
         alert('La recette a été ajouté aux favoris ')
     }
 
@@ -22,9 +22,8 @@ export const FindedRecipe = () => {
         <div>
             <h2>finded recipe</h2>
             {displayRecipe}
-            <Link to='/'><button>Home</button></Link>
-            <Link to='/FindRecipe'><button>Liste de recettes</button></Link>
-            <button onClick={addFavRecipe}>Ajouter en favoris</button>
+            <Link to='/FindRecipe'><button type="button" className="btn">Liste de recettes</button></Link>
+            <button type="button" className="btn" onClick={addFavRecipe}>Ajouter en favoris</button>
         </div>
     )
 }

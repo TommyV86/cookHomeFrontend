@@ -41,7 +41,7 @@ export const AddRecipe = () => {
                     alert('values validated ')
                 }
             }>
-            <Form>
+            <Form className="form">
                 <h2>resérvé aux users connecté</h2>
                 <h2>AddRecipe</h2>
                 <TextField label='nom de la recette' name='name' type='text'/>
@@ -50,10 +50,10 @@ export const AddRecipe = () => {
                 <TextField label='difficulté' name='difficulty' type='text'/>
                 <TextField label='temps de préparation' name='time' type='number'/>
 
-                <button type='submit'>Au placard :p</button>
+                <button  className="btn" type='submit'>Au placard :p</button>
             </Form>
         </Formik>
-        <Link to='/'><button>Home</button></Link>
+        <Link to='/'><button type="button" className="btn">Home</button></Link>
     </div>
     )
 }

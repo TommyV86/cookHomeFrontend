@@ -11,10 +11,12 @@ export const FindRecipe = ({ recipes }) => {
     })
 
     return (
-        <div>
-            <h2>Liste des recettes</h2>
+        <div id="top">
+            <br/><br/>
+            <h2>Liste des recettes</h2><br/>
             {listRecipes}
-            <Link to='/'><button type="button" className="btn btn-primary">Home</button></Link>
+            <Link to='/'><button type="button" className="btn">Home</button></Link><br/>
+            <a href="#top">Retour au top</a>
         </div>
     )
 }

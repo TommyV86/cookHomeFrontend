@@ -5,12 +5,15 @@ export const LastRecipe = () => {
     const recipe = JSON.parse(localStorage.getItem('recipeValues'))
 
     return (
-        <div>
-            <h2>Last recipe</h2>
-            <h2>{recipe.name}</h2>
-            <h2>Description</h2>
-            <h2>{recipe.description}</h2>
-            <Link to='/'><button>Home</button></Link>
+        <div><br/>
+            <div>
+                <h2>Last recipe</h2>
+                <h3>Recette :</h3>
+                <p>{recipe.name}</p>
+                <h3>Description :</h3>
+                <p>{recipe.description}</p>
+            </div>
+            <Link to='/'><button type="button" className="btn">Home</button></Link>
         </div>
     )
 }

@@ -4,7 +4,6 @@ import { Home } from './components/Home';
 import { AddRecipe } from './components/AddRecipe';
 import { FindRecipe } from './components/FindRecipe';
 import { FindedRecipe } from './components/FindedRecipe';
-import { ModifyRecipe } from './components/ModifyRecipe';
 import { FavoritesRecipes } from './components/FavoritesRecipes';
 import { LastRecipe } from './components/LastRecipe';
 import cookAxios from './cookHomeAxios';
@@ -39,7 +38,6 @@ function App() {
           <div className='container'>
             <Link className="navlink" to='/FindRecipe'><p>Trouver une recette</p></Link>
             <Link className="navlink" to='/AddRecipe'><p>Ajouter une recette</p></Link>
-            <Link className="navlink" to='/ModifyRecipe'><p>Modifier une recette</p></Link>
             <Link className="navlink" to='/FavoritesRecipes'><p>Favoris</p></Link>
           </div>
         </nav><br/><br/><br/><br/>
@@ -49,7 +47,6 @@ function App() {
           <Route path='/AddRecipe' element={<AddRecipe/>}/>
           <Route path='/FindRecipe' element={<FindRecipe recipes={recipes}/>}/>
           <Route path='/FindedRecipe' element={<FindedRecipe/>}/>
-          <Route path='/ModifyRecipe' element={<ModifyRecipe/>}/>
           <Route path='/FavoritesRecipes' element={<FavoritesRecipes recipes={recipes}/>}/>
           <Route path='/LastRecipe' element={<LastRecipe/>}/>
         </Routes>

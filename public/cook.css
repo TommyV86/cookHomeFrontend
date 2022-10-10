@@ -30,3 +30,7 @@ p, a, form {
 a:link, a:visited, a:hover, a:active  {
     text-decoration: none;
 }
+
+#input-form {
+    width: 250px;
+}

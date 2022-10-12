@@ -27,8 +27,12 @@ p, a, form {
     font-size: 28px;
 }
 
-a:link, a:visited, a:hover, a:active  {
+a:link, a:visited, a:active  {
     text-decoration: none;
+}
+
+a:hover {
+    color: #d9cab8;
 }
 
 #input-form {

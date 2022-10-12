@@ -1,10 +1,30 @@
-import { Link } from "react-router-dom"
+import { useState } from "react"
 
 export const Home = () => {
     
-    const recipeName = JSON.parse(localStorage.getItem('recipeValues'))
+    const recipe = JSON.parse(localStorage.getItem('recipeValues'))
+    const [ showRecipe, setShowRecipe ] = useState(false)
 
-    const display = recipeName == null ? <h2>pas de nouvelle recette</h2> : <Link to={'/LastRecipe'}><button type="button" className="btn">{recipeName.name}</button></Link>
+    const handleChange = () => {
+        setShowRecipe(true)
+    }
+
+    const handleClose = () => {
+        setShowRecipe(false)
+    }
+
+    const listRecipe = recipe ?
+    <div><br/>
+        <div>
+            <p>{recipe.name}</p>
+            <h3>Description :</h3>
+            <p>{recipe.description}</p>
+            <button type="button" className="btn" onClick={handleClose}>Fermer</button>
+        </div>  
+    </div> : ""
+
+    const isBtn = recipe == null ?  <h2>pas de nouvelle recette</h2> : <button type="button" className="btn" onClick={handleChange}>{recipe.name}</button>
+
     return (
         <div> 
 
@@ -12,7 +32,7 @@ export const Home = () => {
             
             <h2>Bienvenue à Cook Home, vous y trouverez les meilleures recettes ici !</h2><br/>
             <h4>Dernière recette : </h4>
-            {display}   
+            {showRecipe ? listRecipe : isBtn}   
 
         </div>
     )

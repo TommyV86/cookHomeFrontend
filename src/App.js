@@ -5,7 +5,6 @@ import { AddRecipe } from './components/AddRecipe';
 import { FindRecipe } from './components/FindRecipe';
 import { FindedRecipe } from './components/FindedRecipe';
 import { FavoritesRecipes } from './components/FavoritesRecipes';
-import { LastRecipe } from './components/LastRecipe';
 import cookAxios from './cookHomeAxios';
 import { Link } from "react-router-dom"
 
@@ -48,7 +47,6 @@ function App() {
           <Route path='/FindRecipe' element={<FindRecipe recipes={recipes}/>}/>
           <Route path='/FindedRecipe' element={<FindedRecipe/>}/>
           <Route path='/FavoritesRecipes' element={<FavoritesRecipes recipes={recipes}/>}/>
-          <Route path='/LastRecipe' element={<LastRecipe/>}/>
         </Routes>
       </BrowserRouter>
 

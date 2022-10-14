@@ -1,5 +1,5 @@
 body {
-    background-color: #2f4f4f;
+    background-color: #304141;
     text-align: center;
     font-family: 'Satisfy', cursive;
 }
@@ -18,11 +18,11 @@ p, a, form {
 }
 
 .navbar {
-    background-color: #44631c;
+    background-color: #042764;
 }
 
 .btn {
-    background-color: #41add7;
+    background-color: #c8975f;
     margin: 2px;
     font-size: 28px;
 }

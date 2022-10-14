@@ -6,14 +6,16 @@ import cookAxios from "../cookHomeAxios"
 export const FindedRecipe = () => {
     
     const recipeStored = JSON.parse(localStorage.getItem('allRecipesValues'))
-    let recipeIdStored = JSON.parse(localStorage.getItem('idFavRecipes'))
+    let recipesFavStored = JSON.parse(localStorage.getItem('favRecipes'))
+    const recipe = JSON.parse(localStorage.getItem('recipeValues'))
+
     const id = window.location.search.split("=")[1]
-    const arrId = {_id: id}
 
     let displayRecipe = recipeStored.map(recipe=>{
         return(
             <div key={recipe._id}> 
-                <>{recipe._id === id ? <><h3>Recette :</h3><p>{recipe.name}</p><h3>Description :</h3><p>{recipe.description}</p></>: ""}</>
+                <>{recipe._id === id ? 
+                <><h3>Recette :</h3><p>{recipe.name}</p><h3>Description :</h3><div className="container"><p>{recipe.description}</p></div></>: ""}</>
             </div>
         )
     })
@@ -21,18 +23,29 @@ export const FindedRecipe = () => {
     const [ displayFavBtn, setDisplayFavBtn ] = useState(false)
     const addFavRecipe = () => {
         // conditionner de manière à ce que ça set un tableau si y'a rien
-        // sinon créer un objet
-        if(recipeIdStored == null) recipeIdStored = []
-        localStorage.setItem('entryId', JSON.stringify(arrId))
-        recipeIdStored.push(arrId)
-        localStorage.setItem('idFavRecipes', JSON.stringify(recipeIdStored))
-        setDisplayFavBtn(true)
+        if(recipesFavStored === null) recipesFavStored = []
+        // extraire l objet choisi en favoris
+        const isRecipe = (recipe) => {
+            return recipe._id === id;
+        }
+        const recipeToPush = recipeStored.find(isRecipe)
+        const recipeAlreadyStored = recipesFavStored.find(isRecipe)
+
+        // conditionnement reconnu grâce la fonction en argument qui compare l id du params et de celui qui est déjà dans le local storage
+        if(recipeAlreadyStored){
+            alert('recette déjà en favoris !')
+        } else {
+            recipesFavStored.push(recipeToPush)
+            localStorage.setItem('favRecipes', JSON.stringify(recipesFavStored))
+            setDisplayFavBtn(true) 
+        }
     }  
 
     const handleDelete = (id) => {
         cookAxios.put('/deleteRecipe/' + id).then((res)=>{
             const data = res.data
             console.log('id recipe deleted : ' + data);
+            if(recipe._id === id && recipe) localStorage.removeItem('recipeValues')
             window.location.reload()            
         })        
     }

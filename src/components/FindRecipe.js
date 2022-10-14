@@ -16,7 +16,7 @@ export const FindRecipe = ({ recipes }) => {
             <h2>Liste des recettes</h2><br/>
             {listRecipes}
             <Link to='/'><button type="button" className="btn">Home</button></Link><br/>
-            <button type="button" className="btn"><a href="#top">Retour au top</a></button>
+            <a href="#top">Retour au top</a>
         </div>
     )
 }

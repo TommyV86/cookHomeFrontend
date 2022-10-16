@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export const Home = () => {
     
-    const recipe = JSON.parse(localStorage.getItem('recipeValues'))
+    const recipe = JSON.parse(localStorage.getItem('recipeValuesHome'))
     const [ showRecipe, setShowRecipe ] = useState(false)
 
     const handleChange = () => {

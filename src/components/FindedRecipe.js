@@ -5,13 +5,13 @@ import cookAxios from "../cookHomeAxios"
 
 export const FindedRecipe = () => {
     
-    const recipeStored = JSON.parse(localStorage.getItem('allRecipesValues'))
+    const recipesStored = JSON.parse(localStorage.getItem('allRecipesValues'))
     let recipesFavStored = JSON.parse(localStorage.getItem('favRecipes'))
-    const recipe = JSON.parse(localStorage.getItem('recipeValues'))
+    const recipeHome = JSON.parse(localStorage.getItem('recipeValuesHome'))
 
     const id = window.location.search.split("=")[1]
 
-    let displayRecipe = recipeStored.map(recipe=>{
+    let displayRecipe = recipesStored.map(recipe=>{
         return(
             <div key={recipe._id}> 
                 <>{recipe._id === id ? 
@@ -24,13 +24,14 @@ export const FindedRecipe = () => {
     const addFavRecipe = () => {
         // conditionner de manière à ce que ça set un tableau si y'a rien
         if(recipesFavStored === null) recipesFavStored = []
-        // extraire l objet choisi en favoris
+        // fonction qui sert à voir si un id d'un objet existe dans le local str 
+        // par rapport à l'id récupéré en params
         const isRecipe = (recipe) => {
             return recipe._id === id;
         }
-        const recipeToPush = recipeStored.find(isRecipe)
-        const recipeAlreadyStored = recipesFavStored.find(isRecipe)
+        const recipeToPush = recipesStored.find(isRecipe)
 
+        const recipeAlreadyStored = recipesFavStored.find(isRecipe)
         // conditionnement reconnu grâce la fonction en argument qui compare l id du params et de celui qui est déjà dans le local storage
         if(recipeAlreadyStored){
             alert('recette déjà en favoris !')
@@ -45,7 +46,7 @@ export const FindedRecipe = () => {
         cookAxios.put('/deleteRecipe/' + id).then((res)=>{
             const data = res.data
             console.log('id recipe deleted : ' + data);
-            if(recipe._id === id && recipe) localStorage.removeItem('recipeValues')
+            if(recipeHome && recipeHome._id === id) localStorage.removeItem('recipeValuesHome')
             window.location.reload()            
         })        
     }

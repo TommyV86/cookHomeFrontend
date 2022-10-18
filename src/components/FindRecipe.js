@@ -7,7 +7,7 @@ export const FindRecipe = ({ recipes }) => {
     // si option value = selected alors selected = value
     const [ originValue, setOriginValue ] = useState()
     const [ isSelected, setIsSelected ] = useState(false)
-    const optionDefault = <option defaultValue>Choix d'origine de la recette</option>
+    let valueOptDefault = "Choix d'origine de la recette"
 
     const originRecipes = [
         {origin:"Africaine"},
@@ -21,7 +21,7 @@ export const FindRecipe = ({ recipes }) => {
         let selectedValue = e.target.value
         console.log(selectedValue)
         setOriginValue(selectedValue)
-        !(selectedValue === "Choix d'origine de la recette") ? setIsSelected(true) : setIsSelected(false)
+        !(selectedValue === valueOptDefault) ? setIsSelected(true) : setIsSelected(false)
     }
 
     const optionSelect = originRecipes.map(recipe=> {
@@ -34,7 +34,7 @@ export const FindRecipe = ({ recipes }) => {
     <div className="container" id="container-select-form">
         <select className="form-select" id="select-form" 
         aria-label="Default select example" onChange={onChange}>
-            {optionDefault}
+            <option defaultValue>{valueOptDefault}</option>
             {optionSelect}
         </select>
     </div>   

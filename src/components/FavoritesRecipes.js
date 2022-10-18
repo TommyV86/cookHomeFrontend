@@ -19,7 +19,7 @@ export const FavoritesRecipes = () => {
             return(
             <div key={recipe._id}> 
                 <p>{recipe.name}</p>
-                <button type="button" className="btn" onClick={()=>handleDelete(recipe._id)}>Suprrimer</button>
+                <button type="button" className="btn" onClick={()=>handleDelete(recipe._id)}>x</button>
             </div>
         )})
 

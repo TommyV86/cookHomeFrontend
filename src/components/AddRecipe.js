@@ -1,13 +1,24 @@
 import { Link } from "react-router-dom"
 import cookAxios from '../cookHomeAxios'
-import { Formik, Form} from "formik"
+import { Formik, Form } from "formik"
 import * as Yup from "yup"
+import { SelectField } from "./SelectField"
 import { TextField } from "./TextField"
 import { TextFieldDescription } from "./TextFieldDescription"
 import { TextFieldIngredients } from "./TextFieldIngredients"
 
 export const AddRecipe = () => {
 // pour user connecté
+
+    const selectOriginRecipes = 
+        <SelectField label='Origine' name='origin' type='text'>
+            <option selected>Choisir l'origine de la recette ...</option>
+            <option value="Africaine">Africaine</option>
+            <option value="Américaine">Américaine</option>
+            <option value="Asiatique">Asiatique</option>
+            <option value="Européenne">Européenne</option>
+            <option value="Océanienne">Océanienne</option>
+        </SelectField>
     
     const postValues = (values) => {
         cookAxios.post('postRecipe', values).then((res)=>{
@@ -20,6 +31,7 @@ export const AddRecipe = () => {
     }
 
     const validate = Yup.object({
+        origin: Yup.string().max(40, 'max 40 caractères').required('required'),
         name: Yup.string().max(80, 'max 80 caractères').required('required'),
         ingredients: Yup.string().max(1800, '100 caratères max').required('required'),
         difficulty: Yup.string().max(10, '10 caractères max'),
@@ -31,11 +43,12 @@ export const AddRecipe = () => {
     <div>
         <Formik
             initialValues={{
+                origin: '',
                 name: '',
                 ingredients: '',
                 difficulty: '',
                 description: '',
-                time: ''
+                time: Yup.number
             }}
             validationSchema={validate}
             onSubmit={ (values) =>{
@@ -47,10 +60,11 @@ export const AddRecipe = () => {
                 <h2>resérvé aux users connecté</h2>
                 <h2>AddRecipe</h2>
                 <div className="container" id="input-form">
+                    {selectOriginRecipes}                    
                     <TextField label='nom de la recette' name='name' type='text' placeholder="nom ..."/>
                     <TextField label='difficulté' name='difficulty' type='text' placeholder="difficulté ..."/>
                     <TextField label='temps de préparation' name='time' type='number' placeholder="temps ..."/>
-                    <TextFieldIngredients label='ingredients' name='ingredients' type='text' placeholder="ingrédients ..."/>
+                    <TextFieldIngredients label='ingrédients' name='ingredients' type='text' placeholder="ingrédients ..."/>
                     <TextFieldDescription label='description' name='description' type='text' placeholder="Décrivez votre recette ..."/>
                 </div>
 

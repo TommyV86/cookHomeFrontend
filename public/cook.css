@@ -38,3 +38,11 @@ a:hover {
 #input-form {
     width: 250px;
 }
+
+#container-select-form {
+    width: 250px;
+}
+
+#select-form {
+    text-align: center;
+}

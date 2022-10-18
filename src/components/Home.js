@@ -15,7 +15,7 @@ export const Home = () => {
 
     const listRecipe = recipe ?
     <div><br/>
-        <div>
+        <div className="container">
             <p>{recipe.name}</p>
             <h3>Description :</h3>
             <p>{recipe.description}</p>

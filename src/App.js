@@ -12,9 +12,7 @@ import { Link } from "react-router-dom"
 
 
 function App() {
-
   // utilisation des hooks pour distribuer les données aux composants child
-
   const [ recipes, setRecipes ] = useState()
 
   useEffect(()=> {
@@ -46,7 +44,7 @@ function App() {
           <Route path='/AddRecipe' element={<AddRecipe/>}/>
           <Route path='/FindRecipe' element={<FindRecipe recipes={recipes}/>}/>
           <Route path='/FindedRecipe' element={<FindedRecipe/>}/>
-          <Route path='/FavoritesRecipes' element={<FavoritesRecipes recipes={recipes}/>}/>
+          <Route path='/FavoritesRecipes' element={<FavoritesRecipes/>}/>
         </Routes>
       </BrowserRouter>
 

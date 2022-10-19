@@ -19,7 +19,9 @@ export const FavoritesRecipes = () => {
             return(
             <div key={recipe._id}> 
                 <p>{recipe.name}</p>
-                <button type="button" className="btn" onClick={()=>handleDelete(recipe._id)}>x</button>
+                <button type="button" className="btn" onClick={()=>handleDelete(recipe._id)}>
+                    x
+                </button>
             </div>
         )})
 
@@ -28,7 +30,11 @@ export const FavoritesRecipes = () => {
                 <h2>resérvé aux users connecté</h2>
                 <h2>FavoritesRecipes</h2><br/>
                 {displayFav}
-                <Link to='/'><button type="button" className="btn">Home</button></Link>
+                <Link to='/'>
+                    <button type="button" className="btn">
+                        Home
+                    </button>
+                </Link>
             </div>
         )
     } else {
@@ -37,7 +43,11 @@ export const FavoritesRecipes = () => {
                 <h2>resérvé aux users connecté</h2>
                 <h2>FavoritesRecipes</h2><br/>
                 <h2>pas de favoris</h2>
-                <Link to='/'><button type="button" className="btn">Home</button></Link>
+                <Link to='/'>
+                    <button type="button" className="btn">
+                        Home
+                    </button>
+                </Link>
             </div>
         )
     }    

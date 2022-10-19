@@ -19,21 +19,23 @@ export const Home = () => {
             <p>{recipe.name}</p>
             <h3>Description :</h3>
             <p>{recipe.description}</p>
-            <button type="button" className="btn" onClick={handleClose}>Fermer</button>
+            <button type="button" className="btn" onClick={handleClose}>
+                Fermer
+            </button>
         </div>  
     </div> : ""
 
-    const isBtn = recipe == null ?  <h2>pas de nouvelle recette</h2> : <button type="button" className="btn" onClick={handleChange}>{recipe.name}</button>
+    const isBtn = recipe == null ?  <h2>pas de nouvelle recette</h2> : 
+    <button type="button" className="btn" onClick={handleChange}>
+        {recipe.name}
+    </button>
 
     return (
         <div> 
-
             <br/><br/>
-            
             <h2>Bienvenue à Cook Home, vous y trouverez les meilleures recettes ici !</h2><br/>
             <h4>Dernière recette : </h4>
             {showRecipe ? listRecipe : isBtn}   
-
         </div>
     )
 }

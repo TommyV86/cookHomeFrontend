@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import {  useState } from "react"
+import objects from "../objects"
 
 export const FindRecipe = ({ recipes }) => {
     // maper le select avec recipes de façon à afficher l option choisie
@@ -7,15 +8,8 @@ export const FindRecipe = ({ recipes }) => {
     // si option value = selected alors selected = value
     const [ originValue, setOriginValue ] = useState()
     const [ isSelected, setIsSelected ] = useState(false)
-    let valueOptDefault = "Choix d'origine de la recette"
-
-    const originRecipes = [
-        {origin:"Africaine"},
-        {origin:"Américaine"},
-        {origin:"Asiatique"},
-        {origin:"Européenne"},
-        {origin:"Océanienne"}
-    ]
+    const originRecipes = objects.originRecipes
+    let valueOptDefault = objects.valueOptDefault
 
     const onChange = (e) => {
         let selectedValue = e.target.value

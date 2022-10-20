@@ -5,6 +5,8 @@ import { AddRecipe } from './components/AddRecipe';
 import { FindRecipe } from './components/FindRecipe';
 import { FindedRecipe } from './components/FindedRecipe';
 import { FavoritesRecipes } from './components/FavoritesRecipes';
+import { SignIn } from './components/SignIn';
+import { SignUp } from './components/SignUp';
 import cookAxios from './cookHomeAxios';
 import { Link } from "react-router-dom"
 
@@ -16,7 +18,7 @@ function App() {
   const [ recipes, setRecipes ] = useState()
 
   useEffect(()=> {
-    cookAxios.get('/getRecipes').then((res) => {
+    cookAxios.get('getRecipes').then((res) => {
         let recipes = res.data
         let recipesStringified = JSON.stringify(recipes)
         localStorage.setItem('allRecipesValues', recipesStringified)
@@ -36,6 +38,8 @@ function App() {
             <Link className="navlink" to='/FindRecipe'><p>Trouver une recette</p></Link>
             <Link className="navlink" to='/AddRecipe'><p>Ajouter une recette</p></Link>
             <Link className="navlink" to='/FavoritesRecipes'><p>Favoris</p></Link>
+            <Link className="navlink" to='/SignIn'><p>Connexion</p></Link>
+            <Link className="navlink" to='/SignUp'><p>Créer un compte</p></Link>
           </div>
         </nav><br/><br/><br/><br/>
 
@@ -45,6 +49,8 @@ function App() {
           <Route path='/FindRecipe' element={<FindRecipe recipes={recipes}/>}/>
           <Route path='/FindedRecipe' element={<FindedRecipe/>}/>
           <Route path='/FavoritesRecipes' element={<FavoritesRecipes/>}/>
+          <Route path='/SignIn' element={<SignIn/>}/>
+          <Route path='/SignUp' element={<SignUp/>}/>
         </Routes>
       </BrowserRouter>
 

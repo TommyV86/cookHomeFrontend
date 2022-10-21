@@ -21,8 +21,8 @@ export const AddRecipe = () => {
     const postValues = (values) => {
         cookAxios.post('postRecipe', values).then((res)=>{
             const recipesStringified = JSON.stringify(res.data)
-            const resSetIt = localStorage.setItem('recipeValuesHome', recipesStringified)
-            console.log(resSetIt);
+            const recipeSetItem = localStorage.setItem('recipeValuesHome', recipesStringified)
+            console.log(recipeSetItem);
             console.log(" description inserted ")
             console.log(" name description : " + res.data.name)
             window.location.assign('/')
@@ -52,7 +52,6 @@ export const AddRecipe = () => {
                 validationSchema={validate}
                 onSubmit={ (values) =>{
                         postValues(values);
-                        alert('values validated')
                     }
                 }>
                 <Form className="form">

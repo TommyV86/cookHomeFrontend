@@ -3,15 +3,14 @@ import { Link } from "react-router-dom"
 import cookAxios from "../cookHomeAxios"
 
 
-export const FindedRecipe = () => {
+export const FindedRecipe = ({recipes}) => {
     
-    const recipesStored = JSON.parse(localStorage.getItem('allRecipesValues'))
     let recipesFavStored = JSON.parse(localStorage.getItem('favRecipes'))
     const recipeHome = JSON.parse(localStorage.getItem('recipeValuesHome'))
     const [ displayFavBtn, setDisplayFavBtn ] = useState(false)
     const id = window.location.search.split("=")[1]
 
-    let displayRecipe = recipesStored.map(recipe=>{
+    let displayRecipe = recipes.map(recipe=>{
         return(
             <div key={recipe._id}> 
                 <>{recipe._id === id ? 
@@ -40,7 +39,7 @@ export const FindedRecipe = () => {
             const isRecipe = (recipe) => {
                 return recipe._id === id;
             }
-            const recipeToPush = recipesStored.find(isRecipe)
+            const recipeToPush = recipes.find(isRecipe)
 
             const recipeAlreadyStored = recipesFavStored.find(isRecipe)
             // conditionnement reconnu grâce la fonction en argument 
@@ -54,7 +53,7 @@ export const FindedRecipe = () => {
             }
         } else {
             const recipeToStore = 
-            JSON.stringify(recipesStored.filter(recipe=> recipe._id === id))
+            JSON.stringify(recipes.filter(recipe=> recipe._id === id))
             localStorage.setItem('favRecipes', recipeToStore)
         }
     }  
@@ -75,18 +74,16 @@ export const FindedRecipe = () => {
 
             <h2>finded recipe</h2>
             {displayRecipe}
-
+            
             {displayFavBtn ? <h2>recette ajoutée en favoris !</h2> : 
             <>
                 <button type="button" className="btn" onClick={addFavRecipe}>
                     Ajouter en favoris
                 </button>
 
-                
                 <button  className="btn" type='submit' onClick={()=>handleDelete(id)}>
                     Supprimer la Recette
                 </button> 
-                
             </>}
 
             <Link to='/FindRecipe'>

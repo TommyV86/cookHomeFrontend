@@ -12,20 +12,16 @@ import cookAxios from './cookHomeAxios';
 import { Link } from "react-router-dom"
 import { MessageSuccessSignUp } from './components/MessageSuccessSignUp';
 
-
-
-
 function App() {
   // utilisation des hooks pour distribuer les données aux composants child
   const [ recipes, setRecipes ] = useState()
 
   useEffect(()=> {
     cookAxios.get('getRecipes').then((res) => {
-        let recipes = res.data
-        let recipesStringified = JSON.stringify(recipes)
-        localStorage.setItem('allRecipesValues', recipesStringified)
-        let getRecipes = JSON.parse(localStorage.getItem('allRecipesValues'))
-        setRecipes(getRecipes)
+        let data = res.data
+        let recipesStringified = JSON.stringify(data)
+        let recipes = JSON.parse(recipesStringified)
+        setRecipes(recipes)
       }
     )
   }, [])
@@ -49,7 +45,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/AddRecipe' element={<AddRecipe/>}/>
           <Route path='/FindRecipe' element={<FindRecipe recipes={recipes}/>}/>
-          <Route path='/FindedRecipe' element={<FindedRecipe/>}/>
+          <Route path='/FindedRecipe' element={<FindedRecipe recipes={recipes}/>}/>
           <Route path='/FavoritesRecipes' element={<FavoritesRecipes/>}/>
           <Route path='/SignIn' element={<SignIn/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>

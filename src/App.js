@@ -7,8 +7,10 @@ import { FindedRecipe } from './components/FindedRecipe';
 import { FavoritesRecipes } from './components/FavoritesRecipes';
 import { SignIn } from './components/SignIn';
 import { SignUp } from './components/SignUp';
+import { MessageDeleteRecipe } from './components/MessageDeleteRecipe';
 import cookAxios from './cookHomeAxios';
 import { Link } from "react-router-dom"
+import { MessageSuccessSignUp } from './components/MessageSuccessSignUp';
 
 
 
@@ -51,6 +53,8 @@ function App() {
           <Route path='/FavoritesRecipes' element={<FavoritesRecipes/>}/>
           <Route path='/SignIn' element={<SignIn/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>
+          <Route path='/MessageDeleteRecipe' element={<MessageDeleteRecipe/>}/>
+          <Route path='/MessageSuccessSignUp' element={<MessageSuccessSignUp/>}/>
         </Routes>
       </BrowserRouter>
 

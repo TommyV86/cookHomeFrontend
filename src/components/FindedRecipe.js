@@ -66,7 +66,7 @@ export const FindedRecipe = () => {
             if(recipeHome && recipeHome._id === id) {
                 localStorage.removeItem('recipeValuesHome')
             }
-            window.location.reload()            
+            window.location.assign('/MessageDeleteRecipe')
         })        
     }
 
@@ -81,9 +81,12 @@ export const FindedRecipe = () => {
                 <button type="button" className="btn" onClick={addFavRecipe}>
                     Ajouter en favoris
                 </button>
-                <button type="button" className="btn" onClick={()=>handleDelete(id)}>
+
+                
+                <button  className="btn" type='submit' onClick={()=>handleDelete(id)}>
                     Supprimer la Recette
-                </button>
+                </button> 
+                
             </>}
 
             <Link to='/FindRecipe'>

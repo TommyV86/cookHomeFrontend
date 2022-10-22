@@ -12,7 +12,6 @@ export const SignUp = () => {
         cookAxios.post('postUser', values).then(res=> {
                 const user = JSON.stringify(res.data)
                 console.log(user);
-                // recuperer la data en props ?
             }
         )
     }

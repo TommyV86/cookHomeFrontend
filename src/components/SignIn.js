@@ -10,14 +10,15 @@ export const SignIn = () => {
 
     const getUser = (values) => {
             cookAxios.post('getUser', values).then(res=>{
-            const data = res.data
-            localStorage.setItem('userConnected', data)
+            const data = JSON.stringify(res.data)
+            sessionStorage.setItem('userConnected', data)
+            window.location.assign('/')
         })
     }
 
     const validate = Yup.object({
         email: Yup.string().email('email non valide').required('email obligatoire'),
-        passwordHash: Yup.string().min(8, 'minimum 8 caractères')
+        password: Yup.string().min(8, 'minimum 8 caractères')
         .required('mot de passe obligatoire')
     })
 
@@ -25,13 +26,13 @@ export const SignIn = () => {
         <div>
             <Formik initialValues={{
                     email: '',
-                    passwordHash: ''
+                    password: ''
                 }}
                 validationSchema={validate}
                 onSubmit={values=>{
                     getUser(values)
                     setIsSubmit(true)
-                    console.log("user registred : " + values);
+                    console.log("user data : " + values);
                 }}>
                 <Form className="form">
                     <h2>Connexion</h2>
@@ -43,7 +44,7 @@ export const SignIn = () => {
                     {!isSubmit ? 
                     <button className="btn" type='submit'>
                         SignIn
-                    </button> : window.location.assign('/')}
+                    </button> : <a href="/SignIn">email ou mot de passe incorrect, veuillez recommencer</a>}
                 </Form>
             </Formik>
         </div>

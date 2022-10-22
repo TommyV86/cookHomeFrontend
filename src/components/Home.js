@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const Home = () => {
+export const Home = ({user}) => {
     
     const recipe = JSON.parse(localStorage.getItem('recipeValuesHome'))
     const [ showRecipe, setShowRecipe ] = useState(false)
@@ -33,7 +33,7 @@ export const Home = () => {
     return (
         <div> 
             <br/><br/>
-            <h2>Bienvenue à Cook Home, vous y trouverez les meilleures recettes ici !</h2><br/>
+            <h2>Bienvenue {user.name} ! <br/>Vous y trouverez les meilleures recettes ici !</h2><br/>
             <h4>Dernière recette : </h4>
             {showRecipe ? listRecipe : isBtn}   
         </div>

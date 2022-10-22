@@ -5,6 +5,7 @@ import cookAxios from "../cookHomeAxios"
 
 export const FindedRecipe = ({recipes}) => {
     
+    const user = JSON.parse(sessionStorage.getItem('userConnected'))
     let recipesFavStored = JSON.parse(localStorage.getItem('favRecipes'))
     const recipeHome = JSON.parse(localStorage.getItem('recipeValuesHome'))
     const [ displayFavBtn, setDisplayFavBtn ] = useState(false)
@@ -33,17 +34,17 @@ export const FindedRecipe = ({recipes}) => {
     
     const addFavRecipe = () => {
         // conditionner de manière à ce que ça set un tableau si y'a rien
-        // fonction qui sert à voir si un id d'un objet existe dans le local str 
-        // par rapport à l'id récupéré en params
-       if(recipesFavStored){
+        if(recipesFavStored){
+        // fonction isRecipe qui sert d'argument à la méthode find pour voir   
+        // si un id d'un objet existe dans le props recipes par rapport à l'id récupéré en params
+        // pour au final garder l'objet qui a le même id que l'id en params
             const isRecipe = (recipe) => {
                 return recipe._id === id;
             }
             const recipeToPush = recipes.find(isRecipe)
 
+            // vérification pour savoir si l'objet est déjà en favoris
             const recipeAlreadyStored = recipesFavStored.find(isRecipe)
-            // conditionnement reconnu grâce la fonction en argument 
-            // qui compare l id du params et de celui qui est déjà dans le local storage
             if(recipeAlreadyStored){
                 alert('recette déjà en favoris !')
             } else {

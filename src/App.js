@@ -58,10 +58,10 @@ function App() {
 
         <Routes>
           {user ? <Route path='/' element={<Home user={user}/>}/> : <Route path='/' element={<NoLogin/>}/>}
-          <Route path='/AddRecipe' element={<AddRecipe/>}/>
+          <Route path='/AddRecipe' element={<AddRecipe user={user}/>}/>
           <Route path='/FindRecipe' element={<FindRecipe recipes={recipes}/>}/>
-          <Route path='/FindedRecipe' element={<FindedRecipe recipes={recipes}/>}/>
-          <Route path='/FavoritesRecipes' element={<FavoritesRecipes/>}/>
+          <Route path='/FindedRecipe' element={<FindedRecipe user={user} recipes={recipes}/>}/>
+          <Route path='/FavoritesRecipes' element={<FavoritesRecipes user={user}/>}/>
           <Route path='/SignIn' element={<SignIn/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>
           <Route path='/MessageDeleteRecipe' element={<MessageDeleteRecipe/>}/>

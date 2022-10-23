@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import {  useState } from "react"
 import objects from "../objects"
 
-export const FindRecipe = ({ recipes }) => {
+export const FindRecipe = ({recipes}) => {
     // maper le select avec recipes de façon à afficher l option choisie
     // conditionner le selected, boucler sur l option value
     // si option value = selected alors selected = value

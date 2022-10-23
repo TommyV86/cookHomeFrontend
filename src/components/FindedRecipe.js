@@ -3,10 +3,9 @@ import { Link } from "react-router-dom"
 import cookAxios from "../cookHomeAxios"
 
 
-export const FindedRecipe = ({recipes}) => {
+export const FindedRecipe = ({recipes, user}) => {
     
-    const user = JSON.parse(sessionStorage.getItem('userConnected'))
-    let recipesFavStored = JSON.parse(localStorage.getItem('favRecipes'))
+    let recipesFavStored = JSON.parse(localStorage.getItem(`${user.name} favRecipes`))
     const recipeHome = JSON.parse(localStorage.getItem('recipeValuesHome'))
     const [ displayFavBtn, setDisplayFavBtn ] = useState(false)
     const id = window.location.search.split("=")[1]
@@ -49,13 +48,13 @@ export const FindedRecipe = ({recipes}) => {
                 alert('recette déjà en favoris !')
             } else {
                 recipesFavStored.push(recipeToPush)
-                localStorage.setItem('favRecipes', JSON.stringify(recipesFavStored))
+                localStorage.setItem(`${user.name} favRecipes`, JSON.stringify(recipesFavStored))
                 setDisplayFavBtn(true) 
             }
         } else {
             const recipeToStore = 
             JSON.stringify(recipes.filter(recipe=> recipe._id === id))
-            localStorage.setItem('favRecipes', recipeToStore)
+            localStorage.setItem(`${user.name} favRecipes`, recipeToStore)
         }
     }  
 

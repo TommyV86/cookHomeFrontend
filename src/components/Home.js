@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export const Home = ({user}) => {
     
-    const recipe = JSON.parse(localStorage.getItem('recipeValuesHome'))
+    const recipe = JSON.parse(localStorage.getItem(`${user.name} recipeValuesHome`))
     const [ showRecipe, setShowRecipe ] = useState(false)
 
     const handleChange = () => {
@@ -13,7 +13,7 @@ export const Home = ({user}) => {
         setShowRecipe(false)
     }
 
-    const listRecipe = recipe ?
+    const lastRecipe = recipe ?
     <div><br/>
         <div className="container">
             <p>{recipe.name}</p>
@@ -34,8 +34,8 @@ export const Home = ({user}) => {
         <div> 
             <br/><br/>
             <h2>Bienvenue {user.name} ! :D <br/>Vous y trouverez les meilleures recettes ici !</h2><br/>
-            <h4>Dernière recette : </h4>
-            {showRecipe ? listRecipe : isBtn}   
+            <h4>votre dernière recette ajoutée : </h4>
+            {showRecipe ? lastRecipe : isBtn}   
         </div>
     )
 }

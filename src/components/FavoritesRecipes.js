@@ -1,16 +1,16 @@
 // import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-export const FavoritesRecipes = () => {
+export const FavoritesRecipes = ({user}) => {
     
-    const favStored = JSON.parse(localStorage.getItem('favRecipes'))
+    const favStored = JSON.parse(localStorage.getItem(`${user.name} favRecipes`))
 
     const handleDelete = (id) => {
         // conditionner le call back de manière à garder les éléments
         // qui n'ont pas été cliqué
         const recipesToHold = favStored.filter(i=> i._id !== id)
         console.log(recipesToHold);
-        localStorage.setItem('favRecipes', JSON.stringify(recipesToHold))
+        localStorage.setItem(`${user.name} favRecipes`, JSON.stringify(recipesToHold))
         window.location.reload()
     }
 
@@ -27,7 +27,6 @@ export const FavoritesRecipes = () => {
 
         return (
             <div>
-                <h2>resérvé aux users connecté</h2>
                 <h2>FavoritesRecipes</h2><br/>
                 {displayFav}
                 <Link to='/'>
@@ -40,7 +39,6 @@ export const FavoritesRecipes = () => {
     } else {
         return (
             <div>
-                <h2>resérvé aux users connecté</h2>
                 <h2>FavoritesRecipes</h2><br/>
                 <h2>pas de favoris</h2>
                 <Link to='/'>

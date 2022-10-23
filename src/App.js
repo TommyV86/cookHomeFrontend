@@ -14,9 +14,9 @@ import { MessageDeleteRecipe } from './components/MessageDeleteRecipe';
 
 function App() {
   // utilisation des hooks pour distribuer les données aux composants child
+  
   const [ recipes, setRecipes ] = useState()
   const user = JSON.parse(sessionStorage.getItem('userConnected'))
-
   const logOut = () => {
     sessionStorage.removeItem('userConnected')
     window.location.assign('/')

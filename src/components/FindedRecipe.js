@@ -6,7 +6,7 @@ import cookAxios from "../cookHomeAxios"
 export const FindedRecipe = ({recipes, user}) => {
     
     let recipesFavStored = JSON.parse(localStorage.getItem(`${user.name} favRecipes`))
-    const recipeHome = JSON.parse(localStorage.getItem('recipeValuesHome'))
+    const recipeHome = JSON.parse(localStorage.getItem(`recipeValuesHome`))
     const [ displayFavBtn, setDisplayFavBtn ] = useState(false)
     const id = window.location.search.split("=")[1]
 
@@ -63,7 +63,7 @@ export const FindedRecipe = ({recipes, user}) => {
             const data = res.data
             console.log('id recipe deleted : ' + data);
             if(recipeHome && recipeHome._id === id) {
-                localStorage.removeItem('recipeValuesHome')
+                localStorage.removeItem(`recipeValuesHome`)
             }
             window.location.assign('/MessageDeleteRecipe')
         })        

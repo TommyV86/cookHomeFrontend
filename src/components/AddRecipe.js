@@ -6,7 +6,7 @@ import { TextField } from "./TextField"
 import { TextFieldDescription } from "./TextFieldDescription"
 import { TextFieldIngredients } from "./TextFieldIngredients"
 
-export const AddRecipe = ({user}) => {
+export const AddRecipe = () => {
 // pour user connecté
     const selectOriginRecipes = 
         <SelectField label='Origine' name='origin' type='text'>
@@ -21,7 +21,7 @@ export const AddRecipe = ({user}) => {
     const postValues = (values) => {
         cookAxios.post('postRecipe', values).then((res)=>{
             const recipesStringified = JSON.stringify(res.data)
-            const recipeSetItem = localStorage.setItem(`${user.name} recipeValuesHome`, recipesStringified)
+            const recipeSetItem = localStorage.setItem(`recipeValuesHome`, recipesStringified)
             console.log(recipeSetItem);
             console.log(" description inserted ")
             console.log(" name description : " + res.data.name)

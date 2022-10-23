@@ -6,12 +6,16 @@ import { useState } from "react"
 
 export const SignUp = () => {
     // creer compte
-    const [ isSubmit, setIsSubmit ] = useState(false)
+    const [ messageError, setMessageError ] = useState(false)
 
     const postUser = (values) => {
+        if(cookAxios.defaults){
+            setMessageError(true)
+        }
         cookAxios.post('postUser', values).then(res=> {
                 const user = JSON.stringify(res.data)
                 console.log(user);
+                window.location.assign('/SignIn')
             }
         )
     }
@@ -34,8 +38,7 @@ export const SignUp = () => {
                 validationSchema={validate}
                 onSubmit={values=>{
                     postUser(values)
-                    setIsSubmit(true)
-                    console.log("user registred : " + values);
+                    console.log("sign up values on formik");
                 }}>
                 <Form className="form">
                     <h2>Créer un compte</h2>
@@ -45,10 +48,9 @@ export const SignUp = () => {
                         <TextField label='password' name='passwordHash' type='password' placeholder='mot de passe ...'/>
                     </div>
 
-                    {!isSubmit ? 
-                    <button  className="btn" type='submit'>
+                    {!messageError ? <button  className="btn" type='submit'>
                         SignUp
-                    </button> : window.location.assign('/MessageSuccessSignUp')}
+                    </button> : <a href="/SignUp">email déjà existant, veuillez entrer un autre mail</a>}
                     
                 </Form>
             </Formik>

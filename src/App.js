@@ -2,7 +2,7 @@ import cookAxios from './cookHomeAxios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
-import { NoLogin } from './NoLogin';
+import { NoLogin } from './components/NoLogin';
 import { Home } from './components/Home';
 import { AddRecipe } from './components/AddRecipe';
 import { FindRecipe } from './components/FindRecipe';
@@ -11,19 +11,16 @@ import { FavoritesRecipes } from './components/FavoritesRecipes';
 import { SignIn } from './components/SignIn';
 import { SignUp } from './components/SignUp';
 import { MessageDeleteRecipe } from './components/MessageDeleteRecipe';
-import { MessageSuccessSignUp } from './components/MessageSuccessSignUp';
-
 
 function App() {
   // utilisation des hooks pour distribuer les données aux composants child
+  const [ recipes, setRecipes ] = useState()
   const user = JSON.parse(sessionStorage.getItem('userConnected'))
 
   const logOut = () => {
     sessionStorage.removeItem('userConnected')
     window.location.assign('/')
   }
-
-  const [ recipes, setRecipes ] = useState()
 
   useEffect(()=> {
     cookAxios.get('getRecipes').then((res) => {
@@ -68,7 +65,6 @@ function App() {
           <Route path='/SignIn' element={<SignIn/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>
           <Route path='/MessageDeleteRecipe' element={<MessageDeleteRecipe/>}/>
-          <Route path='/MessageSuccessSignUp' element={<MessageSuccessSignUp/>}/>
         </Routes>
       </BrowserRouter>
 

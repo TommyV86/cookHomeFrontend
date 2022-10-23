@@ -32,7 +32,7 @@ export const SignIn = () => {
                 onSubmit={values=>{
                     getUser(values)
                     setIsSubmit(true)
-                    console.log("user data : " + values);
+                    console.log("sign in data on formik");
                 }}>
                 <Form className="form">
                     <h2>Connexion</h2>

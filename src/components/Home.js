@@ -33,7 +33,7 @@ export const Home = ({user}) => {
     return (
         <div> 
             <br/><br/>
-            <h2>Bienvenue {user.name} ! <br/>Vous y trouverez les meilleures recettes ici !</h2><br/>
+            <h2>Bienvenue {user.name} ! :D <br/>Vous y trouverez les meilleures recettes ici !</h2><br/>
             <h4>Dernière recette : </h4>
             {showRecipe ? listRecipe : isBtn}   
         </div>

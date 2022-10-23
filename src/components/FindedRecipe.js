@@ -82,9 +82,10 @@ export const FindedRecipe = ({recipes}) => {
                     Ajouter en favoris
                 </button>
 
+                {user.role === 0 ? 
                 <button  className="btn" type='submit' onClick={()=>handleDelete(id)}>
                     Supprimer la Recette
-                </button> 
+                </button> : null}
             </>}
 
             <Link to='/FindRecipe'>

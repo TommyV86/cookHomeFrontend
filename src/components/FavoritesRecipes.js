@@ -17,13 +17,15 @@ export const FavoritesRecipes = ({user}) => {
     if(favStored !== null){
         const displayFav = favStored.map((recipe)=>{
             return(
-            <div key={recipe._id}> 
-                <p>{recipe.name}</p>
-                <button type="button" className="btn" onClick={()=>handleDelete(recipe._id)}>
-                    x
-                </button>
-            </div>
-        )})
+                <div key={recipe._id}> 
+                    <p>
+                        {recipe.name}
+                        <button type="button" className="btn" onClick={()=>handleDelete(recipe._id)}>
+                            x
+                        </button>
+                    </p>                     
+                </div>
+            )})
 
         return (
             <div>

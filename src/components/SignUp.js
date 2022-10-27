@@ -9,9 +9,8 @@ export const SignUp = () => {
     const [ messageError, setMessageError ] = useState(false)
 
     const postUser = (values) => {
-        if(cookAxios.defaults){
-            setMessageError(true)
-        }
+        if(cookAxios.defaults) setMessageError(true)
+        
         cookAxios.post('postUser', values).then(res=> {
                 const user = JSON.stringify(res.data)
                 console.log(user);

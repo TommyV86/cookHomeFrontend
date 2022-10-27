@@ -15,7 +15,7 @@ export const FindRecipe = ({recipes}) => {
         let selectedValue = e.target.value
         console.log(selectedValue)
         setOriginValue(selectedValue)
-        !(selectedValue === valueOptDefault) ? setIsSelected(true) : setIsSelected(false)
+        selectedValue !== valueOptDefault ? setIsSelected(true) : setIsSelected(false)
     }
 
     const optionSelect = originRecipes.map(recipe=> {

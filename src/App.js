@@ -10,13 +10,15 @@ import { FindedRecipe } from './components/FindedRecipe';
 import { FavoritesRecipes } from './components/FavoritesRecipes';
 import { SignIn } from './components/SignIn';
 import { SignUp } from './components/SignUp';
+import { PasswordSendMail } from './components/PasswordSendMail';
+import { PasswordChange } from './components/PasswordChange';
 import { MessageDeleteRecipe } from './components/MessageDeleteRecipe';
 
 function App() {
   // utilisation des hooks pour distribuer les données aux composants child
-  
   const [ recipes, setRecipes ] = useState()
   const user = JSON.parse(sessionStorage.getItem('userConnected'))
+
   const logOut = () => {
     sessionStorage.removeItem('userConnected')
     window.location.assign('/')
@@ -64,6 +66,8 @@ function App() {
           <Route path='/FavoritesRecipes' element={<FavoritesRecipes user={user}/>}/>
           <Route path='/SignIn' element={<SignIn/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>
+          <Route path='/PasswordSendMail' element={<PasswordSendMail/>}/>
+          <Route path='/PasswordChange' element={<PasswordChange/>}/>
           <Route path='/MessageDeleteRecipe' element={<MessageDeleteRecipe/>}/>
         </Routes>
       </BrowserRouter>

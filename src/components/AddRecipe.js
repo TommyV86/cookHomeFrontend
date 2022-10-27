@@ -55,7 +55,6 @@ export const AddRecipe = () => {
                     }
                 }>
                 <Form className="form">
-                    <h2>resérvé aux users connecté</h2>
                     <h2>AddRecipe</h2>
                     <div className="container" id="input-form">
                         {selectOriginRecipes}                    

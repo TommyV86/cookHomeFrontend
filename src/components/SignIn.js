@@ -2,6 +2,7 @@ import cookAxios from "../cookHomeAxios"
 import { Formik, Form } from "formik"
 import * as Yup from "yup"
 import { TextField } from "./TextField"
+import { Link } from "react-router-dom"
 import { useState } from "react"
 
 export const SignIn = () => {
@@ -47,6 +48,7 @@ export const SignIn = () => {
                     </button> : <a href="/SignIn">email ou mot de passe incorrect, veuillez recommencer</a>}
                 </Form>
             </Formik>
+            <Link to="/PasswordSendMail">mot de passe oublié ?</Link>
         </div>
     )
 } 

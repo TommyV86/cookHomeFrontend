@@ -54,6 +54,7 @@ export const FindedRecipe = ({recipes, user}) => {
             const recipeToStore = 
             JSON.stringify(recipes.filter(recipe=> recipe._id === id))
             localStorage.setItem(`${user.name} favRecipes`, recipeToStore)
+            setDisplayFavBtn(true)
         }
     }  
 

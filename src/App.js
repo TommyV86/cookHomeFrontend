@@ -19,11 +19,6 @@ function App() {
   const [ recipes, setRecipes ] = useState()
   const user = JSON.parse(sessionStorage.getItem('userConnected'))
 
-  const logOut = () => {
-    sessionStorage.removeItem('userConnected')
-    window.location.assign('/')
-  }
-
   useEffect(()=> {
     cookAxios.get('getRecipes').then((res) => {
         let data = res.data
@@ -33,6 +28,11 @@ function App() {
       }
     )
   }, [])
+
+  const logOut = () => {
+    sessionStorage.removeItem('userConnected')
+    window.location.assign('/')
+  }
 
   return (
     <div className="App">

@@ -30,8 +30,8 @@ export const PasswordChange = () => {
                 confirmPassword: ''
             }}
             validationSchema={validate}
-            onSubmit={newPswd=>{
-                postNewPswd(newPswd)
+            onSubmit={validNewPswd=>{
+                postNewPswd(validNewPswd)
                 console.log("changes pswd data on formik");
             }}>
             <Form className="form">

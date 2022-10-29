@@ -8,13 +8,14 @@ export const SignUp = () => {
     // creer compte
     const [ messageError, setMessageError ] = useState(false)
 
-    const postUser = (values) => {
-        if(cookAxios.defaults) setMessageError(true)
-        
+    const postUser = (values) => {        
         cookAxios.post('postUser', values).then(res=> {
                 const user = JSON.stringify(res.data)
                 console.log(user);
                 window.location.assign('/SignIn')
+            }, rej=>{
+                console.log(rej.response);
+                setMessageError(rej.response)
             }
         )
     }

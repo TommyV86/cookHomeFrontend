@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import cookAxios from "../cookHomeAxios"
 
 export const FindedRecipe = ({recipes, user}) => {
-    
     let recipesFavStored = JSON.parse(localStorage.getItem(`${user.name} favRecipes`))
     const recipeHome = JSON.parse(localStorage.getItem(`recipeValuesHome`))
     const [ displayFavBtn, setDisplayFavBtn ] = useState(false)

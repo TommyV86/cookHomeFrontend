@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom"
 
 export const FavoritesRecipes = ({user}) => {
-    
     const favStored = JSON.parse(localStorage.getItem(`${user.name} favRecipes`))
 
     const handleDelete = (id) => {

@@ -5,14 +5,14 @@ import { TextField } from "./TextField"
 import { useState } from "react"
 
 export const PasswordSendMail = () => {
-
     const [ message, setMessage ] = useState(false)
 
-    const postMail = (values) => {
-        cookAxios.post('getEmailforNewPswd', values).then(res => {
+    const postMail = (email) => {
+        cookAxios.post('getEmailforNewPswd', email).then(res => {
             console.log('mail catched on request from backend : ' + res.data);
+            setMessage(true)
         })
-        setMessage(true)
+        
     }
 
     const validate = Yup.object({
@@ -25,8 +25,8 @@ export const PasswordSendMail = () => {
                 email: ''
             }}
             validationSchema={validate}
-            onSubmit={values=>{
-                postMail(values)
+            onSubmit={validEmail=>{
+                postMail(validEmail)
                 console.log("changes pswd data on formik");
             }}>
                 <Form className="form">

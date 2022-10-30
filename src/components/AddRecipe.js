@@ -47,7 +47,7 @@ export const AddRecipe = () => {
                     ingredients: '',
                     difficulty: '',
                     description: '',
-                    time: Yup.number
+                    time: ''
                 }}
                 validationSchema={validate}
                 onSubmit={ (values) =>{
@@ -60,7 +60,7 @@ export const AddRecipe = () => {
                         {selectOriginRecipes}                    
                         <TextField label='nom de la recette' name='name' type='text' placeholder="nom ..."/>
                         <TextField label='difficulté' name='difficulty' type='text' placeholder="difficulté ..."/>
-                        <TextField label='temps de préparation' name='time' type='number' placeholder="temps ..."/>
+                        <TextField label='temps de préparation' name='time' type='number' placeholder="temps en minute ..."/>
                         <TextFieldIngredients label='ingrédients' name='ingredients' type='text' placeholder="ingrédients ..."/>
                         <TextFieldDescription label='description' name='description' type='text' placeholder="Décrivez votre recette ..."/>
                     </div>

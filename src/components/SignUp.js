@@ -48,7 +48,8 @@ export const SignUp = () => {
                         <TextField label='password' name='passwordHash' type='password' placeholder='mot de passe ...'/>
                     </div>
 
-                    {!messageError ? <button  className="btn" type='submit'>
+                    {!messageError ? 
+                    <button  className="btn" type='submit'>
                         SignUp
                     </button> : <a href="/SignUp">email déjà existant, veuillez entrer un autre mail</a>}
                     
